@@ -9,5 +9,5 @@ console.log(getnote);
 console.log(validator.isEmail("imransiddiqui124@gmail.com"));
 console.log(validator.isURL("https://mead.io"));
 console.log(
-  chalks.dim.italic.bold.strikethrough.underline.magenta("Success.....")
+  chalks.dim.italic.bold.underline.magenta("Success.....")
 );
