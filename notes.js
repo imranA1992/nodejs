@@ -17,7 +17,8 @@ const addNote = function (title, body) {
 const saveNotes = function (notes) {
   try {
     const dataJSON = JSON.stringify(notes);
-    fs.writeFileSync("notes.json", dataJSON);
+    const filePath = path.join(__dirname, "notes.json");
+    fs.writeFileSync(filePath, dataJSON);
     console.log("Note added successfully!");
   } catch (error) {
     console.error("Error saving notes:", error.message);
