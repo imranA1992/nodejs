@@ -5,20 +5,26 @@ const getnotes = function (a) {
 };
 const addNote = function (title, body) {
   const notes = loadNotes();
-
-  notes.push({
-    title: title,
-    body: body,
+  const duplicateNotes = notes.filter(function (note) {
+    return note.title === title;
   });
+  if (duplicateNotes.length === 0) {
+    notes.push({
+      title: title,
+      body: body,
+    });
 
-  saveNotes(notes);
+    saveNotes(notes);
+    console.log("New Note Added!");
+  } else {
+    console.log("Note Title Taken!");
+  }
 };
 
 const saveNotes = function (notes) {
   try {
     const dataJSON = JSON.stringify(notes);
-    const filePath = path.join(__dirname, "notes.json");
-    fs.writeFileSync(filePath, dataJSON);
+    fs.writeFileSync("notes.json", dataJSON);
     console.log("Note added successfully!");
   } catch (error) {
     console.error("Error saving notes:", error.message);
